@@ -1,0 +1,104 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Inter:wght@300;400;500;600;700&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-serif: "Cormorant Garamond", serif;
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  
+  --color-brand-dark: #02180D;
+  --color-brand-moss: #12351F;
+  --color-brand-gold: #C99A24;
+  --color-brand-gold-light: #E0B84F;
+  --color-brand-offwhite: #F7F3E8;
+  --color-brand-black: #050805;
+  
+  --radius-xl: 1.5rem;
+  --radius-2xl: 2rem;
+}
+
+@layer base {
+  body {
+    @apply bg-brand-dark text-brand-offwhite font-sans antialiased overflow-x-hidden;
+    scroll-behavior: smooth;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-serif tracking-tight leading-[1.1];
+  }
+}
+
+.noise-bg {
+  position: relative;
+}
+
+.noise-bg::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: url("https://grainy-gradients.vercel.app/noise.svg");
+  filter: contrast(150%) brightness(100%);
+  opacity: 0.05;
+  pointer-events: none;
+  z-index: 50;
+}
+
+.glass-card {
+  @apply bg-white/5 backdrop-blur-2xl border border-white/10 shadow-2xl transition-all duration-500 hover:border-brand-gold/30;
+}
+
+.premium-glow {
+  position: relative;
+}
+
+.premium-glow::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 140%;
+  height: 140%;
+  background: radial-gradient(circle, rgba(201,154,36,0.15) 0%, transparent 70%);
+  filter: blur(40px);
+  z-index: -1;
+  pointer-events: none;
+}
+
+.gold-gradient {
+  background: linear-gradient(135deg, #C99A24 0%, #E0B84F 50%, #C99A24 100%);
+}
+
+.section-padding {
+  @apply py-32 px-6 md:px-12 lg:px-24;
+}
+
+.btn-primary {
+  @apply px-10 py-5 bg-brand-gold text-brand-dark font-bold rounded-full transition-all duration-500 hover:scale-105 hover:shadow-[0_20px_60px_rgba(201,154,36,0.4)] active:scale-95 flex items-center justify-center gap-3 uppercase tracking-widest text-[10px];
+  background: linear-gradient(135deg, #C99A24 0%, #E0B84F 50%, #C99A24 100%);
+  background-size: 200% 200%;
+}
+
+.btn-primary:hover {
+  background-position: 100% 100%;
+}
+
+.btn-secondary {
+  @apply px-10 py-5 border border-brand-gold/40 text-brand-gold font-bold rounded-full transition-all duration-500 hover:bg-brand-gold hover:text-brand-dark hover:border-brand-gold active:scale-95 flex items-center justify-center gap-3 uppercase tracking-widest text-[10px];
+}
+
+.card-hover {
+  @apply transition-all duration-700 hover:-translate-y-3 hover:shadow-[0_30px_60px_-15px_rgba(0,0,0,0.5)] border border-white/5 hover:border-brand-gold/20;
+}
+
+.netflix-card {
+  @apply relative overflow-hidden rounded-2xl transition-all duration-700 hover:scale-105 hover:z-10 shadow-2xl;
+}
+
+.netflix-card::after {
+  content: "";
+  @apply absolute inset-0 bg-gradient-to-t from-brand-black via-transparent to-transparent opacity-80;
+}
+
+.text-balance {
+  text-wrap: balance;
+}
