@@ -53,17 +53,17 @@ const Navbar = () => {
   ];
 
   return (
-    <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${isScrolled ? 'bg-brand-dark/80 backdrop-blur-2xl py-4 border-b border-white/10' : 'bg-transparent py-8'}`}>
+    <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${isScrolled ? 'bg-brand-dark/80 backdrop-blur-2xl py-4 md:py-5 border-b border-white/10' : 'bg-transparent py-8'}`}>
       <div className="max-w-7xl mx-auto px-6 flex justify-between items-center">
         <motion.div 
           initial={{ opacity: 0, x: -20 }}
           animate={{ opacity: 1, x: 0 }}
-          className="flex items-center gap-3 group"
+          className="flex items-center gap-4 md:gap-5 group"
         >
-          <div className="w-12 h-12 bg-white/5 border border-white/10 rounded-full flex items-center justify-center transition-all duration-500 group-hover:border-brand-gold/50 group-hover:shadow-[0_0_20px_rgba(201,154,36,0.3)] overflow-hidden">
+          <div className="w-14 h-14 md:w-20 md:h-20 bg-white/5 border border-white/10 rounded-full flex items-center justify-center transition-all duration-500 group-hover:border-brand-gold/50 group-hover:shadow-[0_0_25px_rgba(201,154,36,0.4)] overflow-hidden shrink-0 shadow-lg">
             <img src={IMAGES.cris} alt="Cris Rossi Logo" className="w-full h-full object-cover" referrerPolicy="no-referrer" />
           </div>
-          <span className="font-serif text-2xl font-medium text-white tracking-tight">Cris Rossi</span>
+          <span className="font-serif text-2xl md:text-[32px] font-medium text-white tracking-tight transition-colors duration-500 group-hover:text-brand-gold">Cris Rossi</span>
         </motion.div>
 
         {/* Desktop Menu */}
