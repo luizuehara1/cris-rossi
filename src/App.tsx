@@ -6,9 +6,6 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { 
-  Instagram, 
-  Youtube, 
-  MessageCircle, 
   ChevronDown, 
   CheckCircle2, 
   ArrowRight,
@@ -22,6 +19,7 @@ import {
   Lock,
   Play
 } from 'lucide-react';
+import { FaWhatsapp, FaInstagram, FaYoutube } from 'react-icons/fa';
 
 const LINKS = {
   course: "https://habitosquecuram.hotmart.host/quebrando-votos-de-pobreza-em-21-dias",
@@ -153,7 +151,7 @@ const Hero = () => {
             className="mb-10 p-5 bg-white/5 backdrop-blur-2xl border border-white/10 rounded-3xl flex items-center gap-5 max-w-sm group hover:border-brand-gold/30 transition-all duration-500"
           >
             <div className="w-14 h-14 bg-brand-gold/10 rounded-2xl flex items-center justify-center shrink-0 border border-brand-gold/20 group-hover:scale-110 transition-transform duration-500 shadow-[0_0_15px_rgba(201,154,36,0.1)]">
-              <MessageCircle size={24} className="text-brand-gold" />
+              <FaWhatsapp size={26} className="text-brand-gold" />
             </div>
             <div>
               <p className="text-sm font-medium text-white/90">QUER MARCAR UMA SESSÃO?</p>
@@ -190,7 +188,7 @@ const Hero = () => {
               <ArrowRight size={18} className="group-hover:translate-x-1.5 transition-transform" />
             </a>
             <a href={LINKS.whatsapp} target="_blank" rel="noopener noreferrer" className="btn-primary text-sm px-12 group shadow-[0_20px_40px_rgba(201,154,36,0.3)]">
-              <MessageCircle size={18} />
+              <FaWhatsapp size={20} />
               Falar com a Cris
             </a>
           </motion.div>
@@ -738,9 +736,9 @@ const Journey = () => {
 
 const Connection = () => {
   const socials = [
-    { name: 'Instagram', icon: <Instagram size={28} />, href: LINKS.instagram, color: 'bg-gradient-to-tr from-yellow-400 via-red-500 to-purple-500' },
-    { name: 'YouTube', icon: <Youtube size={28} />, href: LINKS.youtube, color: 'bg-red-600' },
-    { name: 'WhatsApp', icon: <MessageCircle size={28} />, href: LINKS.whatsapp, color: 'bg-green-500' },
+    { name: 'Instagram', icon: <FaInstagram size={28} />, href: LINKS.instagram, color: 'bg-gradient-to-tr from-yellow-400 via-red-500 to-purple-500' },
+    { name: 'YouTube', icon: <FaYoutube size={28} />, href: LINKS.youtube, color: 'bg-red-600' },
+    { name: 'WhatsApp', icon: <FaWhatsapp size={28} />, href: LINKS.whatsapp, color: 'bg-green-500' },
   ];
 
   return (
@@ -858,31 +856,75 @@ const FAQ = () => {
 
 const Footer = () => {
   return (
-    <footer className="py-12 px-6 bg-brand-dark text-white border-t border-white/5 text-center">
-      <div className="max-w-7xl mx-auto">
-        <div className="flex flex-col items-center gap-6 mb-12">
-          <div className="w-12 h-12 bg-brand-gold rounded-full flex items-center justify-center mb-2">
-            <span className="text-brand-dark font-serif font-bold text-2xl">CR</span>
-          </div>
-          <h2 className="font-serif text-3xl">Cris Rossi</h2>
-          <p className="text-white/40 uppercase tracking-widest text-xs">Terapeuta Vibracional</p>
+    <footer className="py-20 px-6 bg-brand-dark text-white border-t border-white/5 text-center relative overflow-hidden">
+      {/* Background ambient glow matching the premium design */}
+      <div className="absolute inset-x-0 top-0 h-40 bg-gradient-to-b from-brand-gold/3 via-transparent to-transparent pointer-events-none" />
+      <div className="absolute -bottom-20 left-1/2 -translate-x-1/2 w-[500px] h-[250px] bg-brand-moss/10 blur-[100px] rounded-full pointer-events-none" />
+      
+      <div className="max-w-7xl mx-auto relative z-10">
+        <div className="flex flex-col items-center mb-12">
+          {/* Circular Photo of Cris with a premium golden border & hover glow effect */}
+          <motion.div 
+            whileHover={{ scale: 1.05 }}
+            className="w-24 h-24 md:w-28 md:h-28 rounded-full border-2 border-brand-gold/40 p-1 bg-brand-dark/80 shrink-0 shadow-[0_10px_35px_rgba(201,154,36,0.15)] hover:shadow-[0_15px_45px_rgba(201,154,36,0.35)] transition-all duration-500 overflow-hidden mb-5 group"
+          >
+            <div className="w-full h-full rounded-full overflow-hidden">
+              <img 
+                src={IMAGES.cris} 
+                alt="Cris Rossi" 
+                className="w-full h-full object-cover grayscale-[10%] group-hover:grayscale-0 transition-all duration-[2s]" 
+                referrerPolicy="no-referrer"
+              />
+            </div>
+          </motion.div>
+          
+          <h2 className="font-serif text-3xl md:text-4xl tracking-tight text-white mb-2">Cris Rossi</h2>
+          <p className="text-brand-gold text-[10px] md:text-xs uppercase tracking-[0.3em] font-bold font-mono">Terapeuta Vibracional</p>
         </div>
         
-        <div className="grid md:grid-cols-4 gap-8 mb-12 text-sm text-white/60">
-           <a href="#sobre" className="hover:text-brand-gold transition-colors">Sobre Mim</a>
-           <a href="#curso" className="hover:text-brand-gold transition-colors">O Curso</a>
-           <a href="#jornada" className="hover:text-brand-gold transition-colors">Como Funciona</a>
-           <a href={LINKS.whatsapp} target="_blank" rel="noopener noreferrer" className="hover:text-brand-gold transition-colors text-brand-gold underline underline-offset-4">Dúvidas? Fale Conosco</a>
+        {/* Styled and balanced links container */}
+        <div className="flex flex-wrap justify-center items-center gap-x-8 gap-y-4 text-sm md:text-base text-white/70 tracking-wide font-light max-w-3xl mx-auto border-t border-b border-white/[0.06] py-6 sm:py-8 mb-12">
+          <a href="#sobre" className="hover:text-brand-gold hover:translate-y-[-1px] transition-all duration-300">Sobre Mim</a>
+          <span className="hidden sm:inline text-white/10">•</span>
+          <a href="#curso" className="hover:text-brand-gold hover:translate-y-[-1px] transition-all duration-300">O Curso</a>
+          <span className="hidden sm:inline text-white/10">•</span>
+          <a href="#jornada" className="hover:text-brand-gold hover:translate-y-[-1px] transition-all duration-300">Como Funciona</a>
+          <span className="hidden sm:inline text-white/10">•</span>
+          <a href={LINKS.whatsapp} target="_blank" rel="noopener noreferrer" className="hover:text-brand-gold text-brand-gold hover:translate-y-[-1px] transition-all duration-300 underline underline-offset-4 decoration-brand-gold/30 hover:decoration-brand-gold">Dúvidas? Fale Conosco</a>
         </div>
         
-        <div className="h-px bg-white/5 mb-8" />
-        
-        <div className="flex flex-col md:flex-row justify-between items-center gap-6 text-white/30 text-sm">
-          <p>© {new Date().getFullYear()} Cris Rossi. Todos os direitos reservados.</p>
-          <div className="flex gap-6">
-            <a href={LINKS.instagram}><Instagram size={18} /></a>
-            <a href={LINKS.youtube}><Youtube size={18} /></a>
-            <a href={LINKS.whatsapp}><MessageCircle size={18} /></a>
+        <div className="flex flex-col md:flex-row justify-between items-center gap-6 text-white/40 text-[13px] md:text-sm pt-4">
+          <p className="font-light tracking-wide font-sans">© {new Date().getFullYear()} Cris Rossi. Todos os direitos reservados.</p>
+          
+          {/* Highly finished social icons containers */}
+          <div className="flex gap-4">
+            <a 
+              href={LINKS.instagram} 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="w-11 h-11 rounded-full border border-white/10 hover:border-brand-gold flex items-center justify-center text-white/60 hover:text-brand-gold hover:bg-brand-gold/5 transition-all duration-300 hover:shadow-[0_0_15px_rgba(201,154,36,0.15)] hover:scale-105" 
+              aria-label="Instagram"
+            >
+              <FaInstagram size={20} />
+            </a>
+            <a 
+              href={LINKS.youtube} 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="w-11 h-11 rounded-full border border-white/10 hover:border-brand-gold flex items-center justify-center text-white/60 hover:text-brand-gold hover:bg-brand-gold/5 transition-all duration-300 hover:shadow-[0_0_15px_rgba(201,154,36,0.15)] hover:scale-105" 
+              aria-label="YouTube"
+            >
+              <FaYoutube size={20} />
+            </a>
+            <a 
+              href={LINKS.whatsapp} 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="w-11 h-11 rounded-full border border-white/10 hover:border-brand-gold flex items-center justify-center text-white/60 hover:text-brand-gold hover:bg-brand-gold/5 transition-all duration-300 hover:shadow-[0_0_15px_rgba(201,154,36,0.15)] hover:scale-105" 
+              aria-label="WhatsApp"
+            >
+              <FaWhatsapp size={20} />
+            </a>
           </div>
         </div>
       </div>
@@ -912,7 +954,7 @@ const WhatsAppSticky = () => {
       </div>
 
       <div className="relative w-16 h-16 md:w-20 md:h-20 bg-brand-gold text-brand-dark rounded-full shadow-[0_20px_50px_rgba(201,154,36,0.3)] flex items-center justify-center transition-all duration-500 group-hover:shadow-[0_0_70px_rgba(201,154,36,0.5)] group-hover:scale-110">
-        <MessageCircle size={32} className="md:w-9 md:h-9" strokeWidth={1.5} />
+        <FaWhatsapp size={32} className="md:w-10 md:h-10" />
         
         <motion.div 
           animate={{ scale: [1, 1.3, 1], opacity: [0.2, 0.4, 0.2] }}
@@ -928,52 +970,6 @@ const WhatsAppSticky = () => {
   );
 };
 
-const FinalCTA = () => {
-  return (
-    <section className="section-padding bg-brand-black relative overflow-hidden">
-      <div className="absolute inset-0 z-0">
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1000px] h-[1000px] bg-brand-gold/5 blur-[150px] rounded-full" />
-      </div>
-      
-      <div className="max-w-5xl mx-auto px-6 text-center relative z-10">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="space-y-12"
-        >
-          <div className="flex justify-center opacity-30">
-            <Compass size={64} className="text-brand-gold animate-spin-slow" />
-          </div>
-          
-          <h2 className="text-5xl lg:text-8xl font-serif text-white tracking-tighter text-balance">
-            Pronta para sua nova <span className="italic text-brand-gold">frequência</span>?
-          </h2>
-          
-          <p className="text-2xl text-white/50 font-light max-w-2xl mx-auto leading-relaxed">
-            Abra espaço para a abundância que já é sua. A jornada de 21 dias é o portal para essa transformação.
-          </p>
-          
-          <div className="flex flex-col sm:flex-row gap-6 justify-center pt-8">
-            <a href={LINKS.course} target="_blank" rel="noopener noreferrer" className="btn-primary text-base px-16 group">
-               Entrar na jornada agora
-               <ArrowRight size={24} className="group-hover:translate-x-2 transition-transform duration-500" />
-            </a>
-            <a href={LINKS.whatsapp} target="_blank" rel="noopener noreferrer" className="btn-primary text-base px-16 group shadow-[0_20px_50px_rgba(201,154,36,0.4)]">
-               <MessageCircle size={24} />
-               Falar no WhatsApp
-            </a>
-          </div>
-          
-          <div className="pt-12 text-[10px] text-white/20 uppercase tracking-[0.3em] font-bold">
-            Garantia de satisfação espiritual & profissional
-          </div>
-        </motion.div>
-      </div>
-    </section>
-  )
-}
-
 export default function App() {
   return (
     <div className="min-h-screen bg-brand-offwhite noise-bg selection:bg-brand-gold selection:text-brand-dark">
@@ -986,7 +982,6 @@ export default function App() {
         <Journey />
         <Connection />
         <FAQ />
-        <FinalCTA />
       </main>
       <Footer />
       <WhatsAppSticky />
