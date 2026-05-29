@@ -155,8 +155,8 @@ const Hero = () => {
               <MessageCircle size={24} className="text-brand-gold" />
             </div>
             <div>
-              <p className="text-sm font-medium text-white/90">Deseja marcar uma consulta?</p>
-              <a href={LINKS.whatsapp} target="_blank" rel="noopener noreferrer" className="text-[10px] text-brand-gold hover:text-white transition-colors font-bold uppercase tracking-[0.15em] mt-1 inline-block">Clique aqui no WhatsApp</a>
+              <p className="text-sm font-medium text-white/90">QUER MARCAR UMA SESSÃO?</p>
+              <a href={LINKS.whatsapp} target="_blank" rel="noopener noreferrer" className="text-[10px] text-brand-gold hover:text-white transition-colors font-bold uppercase tracking-[0.15em] mt-1 inline-block">CLIQUE AQUI PARA SABER MAIS</a>
             </div>
           </motion.div>
 
@@ -166,7 +166,7 @@ const Hero = () => {
             transition={{ delay: 0.6, duration: 1 }}
             className="text-6xl lg:text-8xl font-serif leading-[0.95] mb-8 text-balance"
           >
-            Quebre <span className="italic text-brand-gold premium-glow">votos de pobreza</span> e floresça
+            Mude sua vida mudando seus <span className="italic text-brand-gold premium-glow">hábitos</span>
           </motion.h1>
           
           <motion.p 
@@ -175,7 +175,7 @@ const Hero = () => {
             transition={{ delay: 0.8, duration: 1 }}
             className="text-xl text-white/60 font-light mb-10 max-w-lg leading-relaxed text-balance"
           >
-            Uma jornada de 21 dias de cura energética para libertar você e seus ancestrais de padrões de escassez.
+            Inicie hoje uma transformação profunda através de hábitos conscientes e cura vibracional com Cris Rossi.
           </motion.p>
           
           <motion.div 
@@ -188,7 +188,8 @@ const Hero = () => {
               Quero iniciar minha jornada
               <ArrowRight size={18} className="group-hover:translate-x-1.5 transition-transform" />
             </a>
-            <a href={LINKS.whatsapp} target="_blank" rel="noopener noreferrer" className="btn-secondary text-sm px-12 group">
+            <a href={LINKS.whatsapp} target="_blank" rel="noopener noreferrer" className="btn-primary text-sm px-12 group shadow-[0_20px_40px_rgba(201,154,36,0.3)]">
+              <MessageCircle size={18} />
               Falar com a Cris
             </a>
           </motion.div>
@@ -758,22 +759,33 @@ const WhatsAppSticky = () => {
       href={LINKS.whatsapp}
       target="_blank"
       rel="noopener noreferrer"
-      initial={{ scale: 0, opacity: 0 }}
-      animate={{ scale: 1, opacity: 1 }}
-      whileHover={{ scale: 1.15 }}
-      whileTap={{ scale: 0.9 }}
-      className="fixed bottom-8 right-8 z-[100] group"
+      initial={{ scale: 0, opacity: 0, x: 20 }}
+      animate={{ scale: 1, opacity: 1, x: 0 }}
+      whileHover={{ scale: 1.05 }}
+      whileTap={{ scale: 0.95 }}
+      className="fixed bottom-6 right-6 md:bottom-10 md:right-10 z-[100] flex items-center gap-4 group"
     >
-      <div className="absolute inset-0 bg-brand-gold rounded-full blur-[20px] group-hover:blur-[30px] opacity-40 transition-all duration-500" />
-      <div className="relative w-16 h-16 bg-brand-gold text-brand-dark rounded-full shadow-2xl flex items-center justify-center transition-all duration-500 group-hover:shadow-[0_0_40px_rgba(201,154,36,0.5)]">
-        <MessageCircle size={32} />
+      <div className="absolute inset-0 bg-brand-gold rounded-full blur-[40px] opacity-10 group-hover:opacity-30 transition-opacity duration-500" />
+      
+      <div className="hidden md:flex flex-col items-end pointer-events-none group-hover:translate-x-0 translate-x-4 opacity-0 group-hover:opacity-100 transition-all duration-500">
+        <div className="bg-brand-black/90 backdrop-blur-2xl border border-brand-gold/20 text-white px-6 py-4 rounded-[1.5rem] shadow-[0_30px_60px_-15px_rgba(0,0,0,0.5)]">
+          <p className="text-[10px] font-bold uppercase tracking-[0.3em] text-brand-gold mb-1">Online agora</p>
+          <p className="text-sm font-medium text-balance">Agende sua sessão vibracional</p>
+        </div>
+      </div>
+
+      <div className="relative w-16 h-16 md:w-20 md:h-20 bg-brand-gold text-brand-dark rounded-full shadow-[0_20px_50px_rgba(201,154,36,0.3)] flex items-center justify-center transition-all duration-500 group-hover:shadow-[0_0_70px_rgba(201,154,36,0.5)] group-hover:scale-110">
+        <MessageCircle size={32} className="md:w-9 md:h-9" strokeWidth={1.5} />
+        
         <motion.div 
-          animate={{ scale: [1, 1.4, 1] }}
+          animate={{ scale: [1, 1.3, 1], opacity: [0.2, 0.4, 0.2] }}
           transition={{ duration: 2, repeat: Infinity }}
-          className="absolute -top-1 -right-1 w-6 h-6 bg-red-600 text-white text-[10px] font-bold rounded-full border-2 border-brand-dark flex items-center justify-center p-0.5"
-        >
+          className="absolute inset-0 rounded-full bg-white"
+        />
+
+        <div className="absolute -top-1 -right-1 w-6 h-6 md:w-7 md:h-7 bg-red-600 text-white text-[10px] md:text-xs font-black rounded-full border-[3px] border-brand-dark flex items-center justify-center shadow-lg">
           1
-        </motion.div>
+        </div>
       </div>
     </motion.a>
   );
@@ -810,7 +822,8 @@ const FinalCTA = () => {
                Entrar na jornada agora
                <ArrowRight size={24} className="group-hover:translate-x-2 transition-transform duration-500" />
             </a>
-            <a href={LINKS.whatsapp} target="_blank" rel="noopener noreferrer" className="btn-secondary text-base px-16">
+            <a href={LINKS.whatsapp} target="_blank" rel="noopener noreferrer" className="btn-primary text-base px-16 group shadow-[0_20px_50px_rgba(201,154,36,0.4)]">
+               <MessageCircle size={24} />
                Falar no WhatsApp
             </a>
           </div>
