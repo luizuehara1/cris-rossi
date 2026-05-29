@@ -19,7 +19,8 @@ import {
   Star,
   Users,
   Calendar,
-  Lock
+  Lock,
+  Play
 } from 'lucide-react';
 
 const LINKS = {
@@ -139,10 +140,10 @@ const Hero = () => {
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ delay: 0.2, duration: 0.8 }}
-            className="inline-flex items-center gap-3 px-5 py-2 rounded-full bg-white/5 border border-white/10 text-brand-gold text-[10px] font-bold tracking-[0.2em] uppercase mb-8 backdrop-blur-md"
+            className="inline-flex items-center gap-3.5 px-6 py-3 sm:px-8 sm:py-3.5 rounded-full bg-brand-gold/8 border border-brand-gold/20 text-brand-gold text-xs sm:text-[13px] font-bold tracking-[0.25em] sm:tracking-[0.3em] uppercase mb-8 backdrop-blur-md shadow-[0_10px_35px_rgba(201,154,36,0.06)] hover:bg-brand-gold/12 transition-all duration-300 pointer-events-none"
           >
-            <Star size={14} className="fill-brand-gold animate-pulse" />
-            Terapeuta Vibracional
+            <Star size={18} className="fill-brand-gold animate-pulse shrink-0" />
+            <span className="leading-none mt-[1px]">Terapeuta Vibracional</span>
           </motion.div>
           
           <motion.div 
@@ -234,85 +235,123 @@ const Hero = () => {
 };
 
 const About = () => {
+  const methods = [
+    {
+      title: "90 Dias para um Novo Mindset",
+      subtitle: "Método Exclusivo",
+      desc: "Uma abordagem transformadora desenvolvida por Cris que une reprogramação mental, alinhamento energético e mudança de hábitos, promovendo resultados reais e duradouros."
+    },
+    {
+      title: "Divórcio Energético",
+      subtitle: "Corte de Vínculos",
+      desc: "Especialmente reconhecida no corte de padrões de escassez, ajudando pessoas a romperem vínculos energéticos negativos, crenças limitantes e bloqueios que impedem o crescimento."
+    },
+    {
+      title: "Quebrando Votos de Pobreza em 21 Dias",
+      subtitle: "Transformação Ativa",
+      desc: "Um passo a passo desenvolvido para identificar, desbloquear e ressignificar padrões energéticos ligados à escassez financeira, medo, limitação e autosabotagem."
+    }
+  ];
+
   return (
     <section id="sobre" className="section-padding bg-brand-offwhite relative overflow-hidden">
       <div className="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-brand-dark/10 to-transparent" />
       
-      <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-24 items-center">
-        <motion.div 
-          initial={{ opacity: 0, scale: 0.95 }}
-          whileInView={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
-          viewport={{ once: true }}
-          className="order-2 md:order-1 relative"
-        >
-          <div className="relative z-10 p-2 bg-white rounded-[3rem] shadow-2xl overflow-hidden group">
-            <img src={IMAGES.cris} alt="Cris Rossi Terapeuta" className="rounded-[2.5rem] w-full grayscale-[10%] group-hover:grayscale-0 transition-all duration-[2s] group-hover:scale-105" />
-            <div className="absolute inset-0 bg-gradient-to-t from-brand-dark/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 p-12 flex flex-col justify-end">
-               <p className="text-white text-2xl font-serif italic mb-2 tracking-tight">Cris Rossi</p>
-               <p className="text-brand-gold text-[10px] uppercase tracking-[0.3em] font-bold">Terapeuta Vibracional</p>
-            </div>
-          </div>
+      <div className="max-w-7xl mx-auto px-6">
+        <div className="grid lg:grid-cols-12 gap-16 lg:gap-24 items-start">
           
-          <div className="absolute -bottom-10 -right-10 z-20 hidden lg:block">
-            <motion.div 
-              initial={{ rotate: -5 }}
-              whileInView={{ rotate: 0 }}
-              className="bg-brand-dark p-10 rounded-[2.5rem] text-white shadow-[0_40px_80px_-15px_rgba(0,0,0,0.5)] max-w-[280px] border border-white/10"
-            >
-              <p className="font-serif italic text-2xl leading-tight mb-4 text-brand-gold">
-                "A cura é o retorno à sua essência."
-              </p>
-              <div className="flex gap-1">
-                {[1,2,3,4,5].map(i => <Star key={i} size={12} className="fill-brand-gold text-brand-gold" />)}
-              </div>
-            </motion.div>
-          </div>
-        </motion.div>
-
-        <motion.div 
-          initial={{ opacity: 0, x: 30 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
-          viewport={{ once: true }}
-          className="order-1 md:order-2"
-        >
-          <motion.div
-            initial={{ opacity: 0, y: 10 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            className="mb-6 flex items-center gap-4"
+          {/* Left Column: Image (Sticky on Desktop) */}
+          <motion.div 
+            initial={{ opacity: 0, scale: 0.95 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
+            viewport={{ once: true }}
+            className="lg:col-span-5 lg:sticky lg:top-32 relative w-full"
           >
-            <div className="h-px w-8 bg-brand-gold" />
-            <span className="text-brand-gold font-bold uppercase tracking-[0.3em] text-[10px]">A Mentora</span>
+            <div className="relative z-10 p-2 bg-white rounded-[3rem] shadow-2xl overflow-hidden group">
+              <img src={IMAGES.cris} alt="Cris Rossi Terapeuta" className="rounded-[2.5rem] w-full grayscale-[10%] group-hover:grayscale-0 transition-all duration-[2s] group-hover:scale-105" />
+              <div className="absolute inset-0 bg-gradient-to-t from-brand-dark/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 p-12 flex flex-col justify-end">
+                 <p className="text-white text-2xl font-serif italic mb-2 tracking-tight">Cris Rossi</p>
+                 <p className="text-brand-gold text-[10px] uppercase tracking-[0.3em] font-bold">Terapeuta Vibracional</p>
+              </div>
+            </div>
+            
+            <div className="absolute -bottom-10 -right-8 z-20 hidden lg:block">
+              <motion.div 
+                initial={{ rotate: -5 }}
+                whileInView={{ rotate: 0 }}
+                className="bg-brand-dark p-8 rounded-[2rem] text-white shadow-[0_40px_80px_-15px_rgba(0,0,0,0.5)] max-w-[260px] border border-white/10"
+              >
+                <p className="font-serif italic text-xl leading-tight mb-4 text-brand-gold">
+                  "A cura é o retorno à sua essência e o despertar do seu merecimento."
+                </p>
+                <div className="flex gap-1">
+                  {[1,2,3,4,5].map(i => <Star key={i} size={12} className="fill-brand-gold text-brand-gold" />)}
+                </div>
+              </motion.div>
+            </div>
           </motion.div>
-          
-          <h2 className="text-5xl lg:text-7xl mb-10 font-serif text-brand-dark leading-tight">
-            Quem é <span className="premium-glow">Cris Rossi</span>
-          </h2>
-          
-          <div className="space-y-8 text-brand-dark/70 text-xl leading-relaxed font-light">
-            <p>
-              Terapeuta vibracional dedicada a conduzir pessoas em profundos processos de cura, expansão de consciência e reconexão espiritual.
-            </p>
-            <p>
-              Seu trabalho é um convite para liberar padrões limitantes e acessar uma vida com verdadeira leveza, clareza e prosperidade divina.
-            </p>
-            <p className="font-medium text-brand-dark/90 italic">
-              "Sua prosperidade é um estado vibracional que aguarda sua liberação interna."
-            </p>
-          </div>
-          
-          <div className="mt-12 pt-12 border-t border-brand-dark/10 flex flex-wrap gap-12">
-             <div className="flex flex-col">
-               <span className="text-brand-gold text-5xl font-serif font-bold tracking-tighter">1.2k+</span>
-               <span className="text-[10px] uppercase tracking-[0.2em] font-bold opacity-40 mt-2">Alunos Transformados</span>
-             </div>
-             <div className="flex flex-col">
-               <span className="text-brand-dark text-5xl font-serif font-bold tracking-tighter">10+</span>
-               <span className="text-[10px] uppercase tracking-[0.2em] font-bold opacity-40 mt-2">Anos de Experiência</span>
-             </div>
-          </div>
-        </motion.div>
+
+          {/* Right Column: Narrative & Methods */}
+          <motion.div 
+            initial={{ opacity: 0, x: 30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
+            viewport={{ once: true }}
+            className="lg:col-span-7 flex flex-col justify-start"
+          >
+            <motion.div
+              initial={{ opacity: 0, y: 10 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              className="mb-6 flex items-center gap-4"
+            >
+              <div className="h-px w-8 bg-brand-gold" />
+              <span className="text-brand-gold font-bold uppercase tracking-[0.3em] text-[10px]">A Mentora</span>
+            </motion.div>
+            
+            <h2 className="text-5xl lg:text-7xl mb-10 font-serif text-brand-dark leading-tight tracking-tight">
+              Quem é <span className="premium-glow text-brand-gold italic">Cris Rossi</span>
+            </h2>
+            
+            <div className="space-y-6 text-brand-dark/80 text-[17px] md:text-lg leading-relaxed font-light text-balance mb-12">
+              <p>
+                <strong className="font-semibold text-brand-dark">Cris Rossi</strong> é Terapeuta Vibracional e Radiestesista, atuando há mais de 10 anos no desenvolvimento humano, equilíbrio energético e expansão da consciência. Sua missão é ajudar pessoas a desbloquearem padrões limitantes, restaurarem sua força interior e reencontrarem o alinhamento energético necessário para prosperar em todas as áreas da vida.
+              </p>
+              <p>
+                Especialista em radiestesia e harmonização vibracional, Cris Rossi já auxiliou inúmeras pessoas em processos de transformação profunda, contribuindo diretamente para mais clareza emocional, fortalecimento espiritual e direcionamento rumo ao sucesso pessoal e profissional.
+              </p>
+              <p>
+                Com sensibilidade, experiência e dedicação, Cris Rossi continua fazendo diferença na vida de seus clientes, guiando cada pessoa em uma jornada de cura, expansão e transformação vibracional, ajudando-as a despertarem seu verdadeiro potencial e construírem uma nova realidade de equilíbrio, abundância e propósito.
+              </p>
+            </div>
+
+            {/* Methods Showcase Section */}
+            <div className="space-y-6">
+              <h3 className="text-xs font-bold uppercase tracking-[0.25em] text-brand-gold font-mono">Metodologias & Métodos Exclusivos:</h3>
+              
+              <div className="grid gap-6">
+                {methods.map((method, index) => (
+                  <motion.div 
+                    key={index}
+                    initial={{ opacity: 0, y: 15 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: index * 0.1 }}
+                    whileHover={{ y: -3 }}
+                    className="p-8 bg-white border border-brand-dark/[0.04] rounded-2xl md:rounded-[2rem] shadow-[0_15px_40px_-20px_rgba(0,0,0,0.05)] hover:shadow-[0_25px_60px_-15px_rgba(201,154,36,0.12)] hover:border-brand-gold/20 transition-all duration-500 group"
+                  >
+                    <span className="text-[10px] font-bold uppercase tracking-[0.25em] text-brand-gold mb-2 block">{method.subtitle}</span>
+                    <h4 className="text-xl md:text-2xl font-serif text-brand-dark font-medium mb-3 group-hover:text-brand-gold transition-colors">{method.title}</h4>
+                    <p className="text-sm md:text-base text-brand-dark/70 font-light leading-relaxed">{method.desc}</p>
+                  </motion.div>
+                ))}
+              </div>
+            </div>
+
+
+
+          </motion.div>
+        </div>
       </div>
     </section>
   );
@@ -333,107 +372,128 @@ const Course = () => {
       <div className="absolute top-0 right-0 w-full h-full bg-brand-moss/10 pointer-events-none" />
       
       <div className="max-w-7xl mx-auto relative z-10">
-        <div className="max-w-3xl mb-24">
-          <motion.div
-            initial={{ opacity: 0, x: -20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            className="mb-6 flex items-center gap-4"
-          >
-            <div className="h-px w-12 bg-brand-gold" />
-            <span className="text-brand-gold font-bold uppercase tracking-[0.3em] text-[10px]">A Jornada de Transformação</span>
-          </motion.div>
-          <motion.h2 
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-5xl lg:text-7xl mb-8 font-serif"
-          >
-            Quebrando Votos de Pobreza em 21 Dias
-          </motion.h2>
-          <motion.p 
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            className="text-xl text-white/50 font-light leading-relaxed"
-          >
-            Uma imersão profunda para quem busca curar a relação com o dinheiro, liberando memórias e votos que bloqueiam o fluxo da abundância na sua vida.
-          </motion.p>
-        </div>
+        <div className="grid lg:grid-cols-12 gap-12 lg:gap-20 items-start">
+          
+          {/* Left Column: Storytelling & Methodology */}
+          <div className="lg:col-span-7 space-y-10">
+            <motion.div
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              className="flex items-center gap-4"
+            >
+              <div className="h-px w-12 bg-brand-gold" />
+              <span className="text-brand-gold font-bold uppercase tracking-[0.3em] text-[10px]">A Jornada de Transformação</span>
+            </motion.div>
 
-        <div className="grid lg:grid-cols-2 gap-20 items-center">
-          <motion.div 
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="space-y-12"
-          >
-            <div className="grid sm:grid-cols-2 gap-x-8 gap-y-6">
-              {benefits.map((benefit, i) => (
-                <motion.div 
-                  key={i} 
-                  initial={{ opacity: 0, x: -10 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  transition={{ delay: i * 0.1 }}
-                  whileHover={{ x: 5 }}
-                  className="flex gap-4 items-center group cursor-default"
-                >
-                  <div className="w-8 h-8 rounded-full bg-brand-gold/10 border border-brand-gold/20 flex items-center justify-center shrink-0 group-hover:bg-brand-gold group-hover:text-brand-dark transition-all duration-300">
-                    <CheckCircle2 size={16} />
-                  </div>
-                  <span className="text-white/70 font-medium group-hover:text-white transition-colors tracking-tight">{benefit}</span>
-                </motion.div>
-              ))}
+            <motion.h2 
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="text-5xl lg:text-7xl font-serif text-white tracking-tight leading-tight text-balance"
+            >
+              Quebrando Votos de Pobreza em 21 Dias
+            </motion.h2>
+
+            <motion.div
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.1 }}
+              className="space-y-6 text-white/70 font-light leading-relaxed text-base md:text-lg text-balance"
+            >
+              <p>
+                O método <span className="text-white font-medium">“Quebrando Votos de Pobreza em 21 Dias”</span> foi desenvolvido para ajudar pessoas a identificarem e liberarem padrões energéticos de escassez que impedem o fluxo da prosperidade, da abundância e da realização pessoal.
+              </p>
+              <p>
+                Através de um passo a passo profundo e transformador, você aprenderá a <span className="text-brand-gold font-medium">cortar laços energéticos negativos</span> trazidos de gerações ancestrais, votos conscientes e inconscientes, juras, maldições, pragas, sentimentos de vingança, falta de permissão para prosperar e bloqueios emocionais que limitam sua evolução.
+              </p>
+              <p>
+                Muitas vezes, carregamos pesos energéticos herdados da família, crenças de sofrimento, culpa e escassez que foram repetidas por anos e que acabam afetando nossos relacionamentos, nossa vida financeira, emocional e espiritual.
+              </p>
+              <p>
+                Este método foi criado para promover uma verdadeira libertação energética, ajudando você a romper com padrões repetitivos, desbloquear sua energia e permitir que a prosperidade volte a fluir de forma leve e equilibrada em sua vida.
+              </p>
+              <p>
+                Durante 21 dias, você será conduzido(a) por um processo de limpeza, consciência, fortalecimento vibracional e reconexão com seu merecimento, despertando uma nova mentalidade de abundância e expansão.
+              </p>
+              <p className="border-l-2 border-brand-gold/40 pl-4 py-1 text-white/85 font-medium italic">
+                “Cortar laços com a pobreza e o não merecimento é modificar de uma vez por todas a sua assinatura energética, liberando o fluxo da riqueza em sua vida.”
+              </p>
+              <p className="font-medium text-brand-gold text-lg">
+                Permita-se viver uma nova realidade.
+              </p>
+            </motion.div>
+
+            {/* Benefit Tags list styled nicely */}
+            <div className="space-y-6 pt-6">
+              <h3 className="text-xs font-bold uppercase tracking-[0.2em] text-brand-gold/80 font-mono">O que você vai conquistar:</h3>
+              <div className="grid sm:grid-cols-2 gap-x-8 gap-y-5">
+                {benefits.map((benefit, i) => (
+                  <motion.div 
+                    key={i} 
+                    initial={{ opacity: 0, x: -10 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    transition={{ delay: i * 0.1 }}
+                    whileHover={{ x: 5 }}
+                    className="flex gap-4 items-center group cursor-default"
+                  >
+                    <div className="w-8 h-8 rounded-full bg-brand-gold/10 border border-brand-gold/20 flex items-center justify-center shrink-0 group-hover:bg-brand-gold group-hover:text-brand-dark transition-all duration-300">
+                      <CheckCircle2 size={16} />
+                    </div>
+                    <span className="text-white/70 font-medium group-hover:text-white transition-colors tracking-tight text-sm md:text-base">{benefit}</span>
+                  </motion.div>
+                ))}
+              </div>
             </div>
-            
-            <div className="glass-card p-10 rounded-[2rem] border-brand-gold/10 relative">
-              <div className="absolute top-0 right-0 p-6 opacity-10">
-                <Compass size={80} />
+
+            {/* Premium CTA glassmorphic package card */}
+            <div className="glass-card p-8 md:p-10 rounded-[2rem] border-brand-gold/10 relative overflow-hidden">
+              <div className="absolute top-0 right-0 p-6 opacity-[0.03] pointer-events-none">
+                <Compass size={120} />
               </div>
               <p className="text-brand-offwhite/80 leading-relaxed italic text-lg mb-8 relative z-10">
                 "Este processo não é apenas racional, é uma limpeza profunda em nível de DNA espiritual, removendo o que não te pertence mais."
               </p>
-              <a href={LINKS.course} target="_blank" rel="noopener noreferrer" className="btn-primary w-full shadow-2xl">
+              <a href={LINKS.course} target="_blank" rel="noopener noreferrer" className="btn-primary w-full shadow-2xl relative z-10">
                 Garantir meu curso agora
               </a>
             </div>
-          </motion.div>
+          </div>
 
-          <motion.div 
-            initial={{ opacity: 0, scale: 0.95 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true }}
-            className="flex justify-center perspective-[2000px]"
-          >
+          {/* Right Column: Sticky Capa Card */}
+          <div className="lg:col-span-5 lg:sticky lg:top-32 flex justify-center w-full">
             <motion.div 
-              whileHover={{ rotateY: 10, rotateX: -5, scale: 1.02 }}
-              className="relative w-full max-w-md group transition-all duration-700"
+              initial={{ opacity: 0, scale: 0.95 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              className="relative w-full max-w-sm group transition-all duration-700 perspective-[2000px]"
             >
               <div className="absolute -inset-4 bg-brand-gold/10 blur-[60px] opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
               
-              <div className="netflix-card aspect-[1/1] border border-white/5 relative z-10">
+              <div className="netflix-card aspect-[11/14] border border-white/5 relative z-10">
                 <img 
                   src={IMAGES.course} 
                   alt="Curso Cris Rossi" 
                   className="w-full h-full object-cover" 
                 />
                 
-                <div className="absolute inset-0 bg-gradient-to-t from-brand-black via-brand-black/20 to-transparent p-10 flex flex-col justify-end">
+                <div className="absolute inset-0 bg-gradient-to-t from-brand-black via-brand-black/35 to-transparent p-8 flex flex-col justify-end">
                    <div className="flex items-center gap-3 mb-4">
                       <div className="px-3 py-1 bg-brand-gold text-brand-dark text-[10px] font-bold uppercase tracking-[0.2em] rounded">Original Cris Rossi</div>
                       <span className="text-xs text-white/60 font-bold">Volume 01</span>
                    </div>
-                   <h4 className="text-4xl font-serif text-white mb-6 leading-tight group-hover:text-brand-gold transition-colors duration-500">Jornada da Prosperidade</h4>
+                   <h4 className="text-3xl font-serif text-white mb-6 leading-tight group-hover:text-brand-gold transition-colors duration-500">Jornada da Prosperidade</h4>
                    
                    <div className="flex items-center gap-6">
                       <div className="flex -space-x-3">
                          {[1,2,3,4].map(i => (
-                           <div key={i} className="w-10 h-10 rounded-full border-2 border-brand-dark bg-brand-moss overflow-hidden shadow-lg transition-transform hover:-translate-y-1">
+                           <div key={i} className="w-8 h-8 rounded-full border-2 border-brand-dark bg-brand-moss overflow-hidden shadow-lg transition-transform hover:-translate-y-1">
                              <img src={`https://i.pravatar.cc/100?u=user${i}`} alt="User" />
                            </div>
                          ))}
                       </div>
-                      <div className="h-px w-8 bg-white/20" />
+                      <div className="h-px w-6 bg-white/20" />
                       <span className="text-[10px] text-white/50 uppercase tracking-[0.2em] font-bold">+ de 1.2k Alunos</span>
                    </div>
                 </div>
@@ -445,7 +505,8 @@ const Course = () => {
                 </div>
               </div>
             </motion.div>
-          </motion.div>
+          </div>
+
         </div>
       </div>
     </section>
@@ -498,106 +559,182 @@ const ForWho = () => {
   );
 };
 
+const VideoCard = ({ video, onPlay }: { 
+  video: { id: string; title: string; category: string; description: string }; 
+  onPlay: (id: string) => void 
+}) => {
+  const [thumbUrl, setThumbUrl] = useState(`https://img.youtube.com/vi/${video.id}/maxresdefault.jpg`);
+
+  return (
+    <motion.div
+      whileHover={{ y: -8 }}
+      className="group relative cursor-pointer bg-brand-dark/40 border border-brand-gold/15 hover:border-brand-gold/40 rounded-[2rem] overflow-hidden transition-all duration-500 flex flex-col h-full shadow-[0_20px_50px_rgba(0,0,0,0.4)]"
+      onClick={() => onPlay(video.id)}
+    >
+      {/* Thumbnail container */}
+      <div className="relative aspect-[16/10] w-full overflow-hidden bg-brand-dark select-none">
+        <img
+          src={thumbUrl}
+          alt={video.title}
+          onError={() => setThumbUrl(`https://img.youtube.com/vi/${video.id}/hqdefault.jpg`)}
+          className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+          referrerPolicy="no-referrer"
+        />
+        {/* Play Overlay */}
+        <div className="absolute inset-0 bg-brand-black/40 group-hover:bg-brand-black/25 transition-colors duration-500 flex items-center justify-center">
+          <motion.div
+            whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 0.95 }}
+            className="w-16 h-16 md:w-20 md:h-20 bg-brand-gold text-brand-dark rounded-full flex items-center justify-center shadow-[0_10px_35px_rgba(201,154,36,0.3)] transition-all duration-500 group-hover:shadow-[0_0_50px_rgba(201,154,36,0.6)]"
+          >
+            <Play size={28} className="fill-brand-dark ml-1 md:w-8 md:h-8" />
+          </motion.div>
+        </div>
+      </div>
+      
+      {/* Video text content */}
+      <div className="p-6 md:p-8 flex flex-col justify-between flex-grow">
+        <div className="space-y-2">
+          <span className="text-[10px] font-bold uppercase tracking-[0.25em] text-brand-gold/95 font-mono mb-2 block">{video.category}</span>
+          <h4 className="text-xl md:text-2xl font-serif text-white font-medium leading-snug group-hover:text-brand-gold transition-colors duration-300">
+            {video.title}
+          </h4>
+        </div>
+        <p className="text-white/50 text-sm font-light mt-4 line-clamp-3 leading-relaxed">
+          {video.description}
+        </p>
+      </div>
+    </motion.div>
+  );
+};
+
 const Journey = () => {
-  const steps = [
+  const [activeVideoId, setActiveVideoId] = useState<string | null>(null);
+
+  const videos = [
     {
-      title: "Consciência",
-      desc: "Identificação cirúrgica dos padrões, votos e crenças que atuam no seu campo.",
-      icon: <Compass size={32} />
+      id: "8oMLGe-iECY",
+      title: "A escassez que você vive pode não ser falta de sorte ou castigo, e sim o passado pesando sobre você",
+      category: "Jornada de 21 Dias",
+      description: "Cris Rossi partilha ensinamentos e insights sobre a quebra vibracional de crenças históricas e a sintonização do amor e abundância divina em seu próprio ambiente doméstico."
     },
     {
-      title: "Liberação",
-      desc: "Práticas vibracionais para limpar registros ancestrais e dívidas energéticas.",
-      icon: <Zap size={32} />
+      id: "gezcoICe4sg",
+      title: "Gotas de Orvalho — 1 hora de limpeza de memórias",
+      category: "Alinhamento Vibracional",
+      description: "Um mergulho essencial de Cris Rossi ensinando como os pactos, crenças inconscientes e as falsas juras de escassez sabotam silenciosamente a atração de novos clientes e recursos."
     },
     {
-      title: "Reprogramação",
-      desc: "Ancoragem da nova frequência de merecimento e fluxo constante de abundância.",
-      icon: <Star size={32} />
+      id: "E3fzzFTyk1g",
+      title: "Quebrando votos de pobreza em 21 dias — Depoimento Benjamin Lima",
+      category: "Relato de Aluno",
+      description: "O emocionante depoimento de Benjamin Lima sobre o corte radical dos bloqueios ancestrais de escassez e o resgate consciente da permissão interna para expandir e prosperar."
+    },
+    {
+      id: "UdKoCqRsjoo",
+      title: "Quebrando votos de pobreza em 21 dias — Depoimento Viviane Santos",
+      category: "Relato de Aluna",
+      description: "Viviane Santos detalha as realizações, insights inovadores e o despertar duradouro do merecimento financeiro após vivenciar as meditações e técnicas guiadas da Cris Rossi."
     }
   ];
 
   return (
-    <section id="jornada" className="section-padding bg-brand-dark text-white overflow-hidden">
-      <div className="max-w-7xl mx-auto">
-        <div className="text-center mb-32">
+    <section id="jornada" className="section-padding bg-brand-dark text-white relative overflow-hidden">
+      {/* Lights & Glow Effects */}
+      <div className="absolute inset-0 z-0 pointer-events-none">
+        <div className="absolute top-1/4 left-1/4 w-[500px] h-[500px] bg-brand-gold/5 blur-[120px] rounded-full animate-pulse-slow" />
+        <div className="absolute bottom-1/4 right-1/4 w-[600px] h-[600px] bg-brand-moss/10 blur-[130px] rounded-full animate-pulse-slow" />
+      </div>
+
+      <div className="max-w-7xl mx-auto relative z-10 px-6">
+        <div className="text-center mb-20 md:mb-24">
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            className="inline-flex items-center gap-3 px-4 py-1.5 rounded-full bg-brand-gold/8 border border-brand-gold/20 text-brand-gold text-[10px] font-bold tracking-[0.25em] uppercase mb-6"
+          >
+            <Star size={12} className="fill-brand-gold animate-pulse" />
+            Prova Social & Depoimentos
+          </motion.div>
+          
           <motion.h2 
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            className="text-5xl lg:text-8xl mb-8 font-serif tracking-tight"
+            viewport={{ once: true }}
+            className="text-5xl lg:text-7xl mb-6 font-serif tracking-tight leading-tight text-white"
           >
-            A Trilha da <span className="italic text-brand-gold">Transformação</span>
+            Depoimentos de <span className="italic text-brand-gold">Transformação</span>
           </motion.h2>
-          <p className="text-white/40 max-w-2xl mx-auto uppercase tracking-[0.4em] text-[10px] font-bold">Os três portais da sua libertação</p>
+          
+          <motion.p 
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            className="text-white/60 max-w-2xl mx-auto text-base md:text-lg font-light leading-relaxed text-balance"
+          >
+            Veja relatos reais e aulas transformadoras de pessoas que vivenciaram e atestaram o poder curativo do método Quebrando Votos de Pobreza em 21 Dias.
+          </motion.p>
         </div>
 
-        <div className="grid md:grid-cols-3 gap-16 relative">
-          {/* Connector Line */}
-          <div className="absolute top-[120px] left-0 w-full h-[2px] bg-gradient-to-r from-transparent via-brand-gold/20 to-transparent hidden md:block" />
-          
-          {steps.map((step, index) => (
-            <motion.div 
-              key={index}
-              initial={{ opacity: 0, y: 40 }}
+        {/* Videos Grid */}
+        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
+          {videos.map((vid, idx) => (
+            <motion.div
+              key={vid.id}
+              initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{ delay: index * 0.2, duration: 0.8 }}
               viewport={{ once: true }}
-              className="relative z-10 text-center group"
+              transition={{ delay: idx * 0.1, duration: 0.8 }}
             >
-              <div className="relative mb-12 flex justify-center">
-                <div className="w-32 h-32 rounded-full border border-brand-gold/20 bg-brand-dark flex items-center justify-center text-brand-gold shadow-[0_0_50px_rgba(201,154,36,0.1)] transition-all duration-700 group-hover:scale-110 group-hover:border-brand-gold group-hover:shadow-[0_0_80px_rgba(201,154,36,0.3)]">
-                  {step.icon}
-                </div>
-                {/* Number Badge */}
-                <div className="absolute -top-2 -right-2 w-10 h-10 rounded-full bg-brand-gold text-brand-dark font-serif font-bold flex items-center justify-center text-xl shadow-xl transition-all duration-500 group-hover:scale-110">
-                  {index + 1}
-                </div>
-              </div>
-              
-              <div className="glass-card p-10 rounded-[2.5rem] border-white/5 group-hover:border-brand-gold/20 transition-all duration-700">
-                <h3 className="text-3xl font-serif font-medium text-white mb-6 tracking-tight group-hover:text-brand-gold transition-colors">{step.title}</h3>
-                <div className="w-12 h-1 bg-brand-gold/30 mx-auto mb-6 transition-all duration-500 group-hover:w-24 group-hover:bg-brand-gold" />
-                <p className="text-white/50 leading-relaxed text-lg font-light group-hover:text-white/80 transition-colors">
-                  {step.desc}
-                </p>
-              </div>
+              <VideoCard video={vid} onPlay={(id) => setActiveVideoId(id)} />
             </motion.div>
           ))}
         </div>
       </div>
+
+      {/* Video Modal Player */}
+      <AnimatePresence>
+        {activeVideoId && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 z-[1000] flex items-center justify-center p-4 md:p-8 bg-brand-black/95 backdrop-blur-md"
+            onClick={() => setActiveVideoId(null)}
+          >
+            <motion.div
+              initial={{ scale: 0.9, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.9, opacity: 0 }}
+              transition={{ type: "spring", damping: 25, stiffness: 180 }}
+              className="relative w-full max-w-4xl aspect-video rounded-3xl overflow-hidden bg-brand-dark border border-brand-gold/25 shadow-2xl"
+              onClick={(e) => e.stopPropagation()}
+            >
+              {/* Close Button */}
+              <button 
+                onClick={() => setActiveVideoId(null)}
+                className="absolute top-4 right-4 z-50 p-2.5 rounded-full bg-brand-black/60 text-white hover:text-brand-gold hover:bg-brand-black/90 transition-all duration-300"
+              >
+                <X size={24} />
+              </button>
+              
+              <iframe
+                src={`https://www.youtube.com/embed/${activeVideoId}?autoplay=1&rel=0`}
+                title="Depoimento Video"
+                className="w-full h-full"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowFullScreen
+              />
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </section>
   );
 };
 
-const EmotionalCall = () => {
-  return (
-    <section className="relative py-24 px-6 md:px-12 bg-brand-dark overflow-hidden">
-      <div className="absolute inset-0 opacity-20">
-        <img src={IMAGES.spiritual} alt="Abundância" className="w-full h-full object-cover blur-sm" />
-      </div>
-      <div className="absolute inset-0 bg-brand-dark/80" />
-      
-      <div className="max-w-4xl mx-auto relative z-10 text-center">
-        <motion.div
-           initial={{ opacity: 0, scale: 0.95 }}
-           whileInView={{ opacity: 1, scale: 1 }}
-           viewport={{ once: true }}
-           className="p-12 md:p-20 rounded-[3rem] border border-white/10 bg-black/30 backdrop-blur-sm"
-        >
-          <h2 className="text-4xl lg:text-6xl font-serif mb-8 leading-tight">
-            A prosperidade também começa na sua <span className="text-brand-gold italic">energia</span>.
-          </h2>
-          <p className="text-xl text-white/70 mb-12 font-light leading-relaxed">
-            Muitas vezes, a escassez não está apenas nas escolhas financeiras, mas em padrões profundos carregados pela história familiar, pelas crenças e pelos registros energéticos. Essa jornada foi criada para quem está pronta para olhar para isso com amor e transformar.
-          </p>
-          <a href={LINKS.course} target="_blank" rel="noopener noreferrer" className="btn-primary text-xl px-12">
-            Quero quebrar votos de pobreza
-          </a>
-        </motion.div>
-      </div>
-    </section>
-  );
-};
+
 
 const Connection = () => {
   const socials = [
@@ -847,7 +984,6 @@ export default function App() {
         <Course />
         <ForWho />
         <Journey />
-        <EmotionalCall />
         <Connection />
         <FAQ />
         <FinalCTA />
