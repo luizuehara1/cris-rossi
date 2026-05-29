@@ -174,7 +174,7 @@ const Hero = () => {
             transition={{ delay: 0.8, duration: 1 }}
             className="text-xl text-white/60 font-light mb-10 max-w-lg leading-relaxed text-balance"
           >
-            Inicie hoje uma transformação profunda através de hábitos conscientes e cura vibracional com Cris Rossi.
+            Inicie hoje uma transformação através de hábitos conscientes e correção vibracional com Cris Rossi.
           </motion.p>
           
           <motion.div 
