@@ -406,7 +406,7 @@ const About = () => {
 const Course = () => {
   const benefitsData = [
     {
-      title: "Liberar crenças de escassez",
+      title: "Liberação de crenças de",
       desc: "Limpeza profunda de medos inconscientes, sentimentos de falta e crenças limitantes sobre o fluxo do dinheiro.",
       icon: Sparkles,
       badge: "Mentalidade"
@@ -425,7 +425,7 @@ const Course = () => {
     },
     {
       title: "Consciência de Abundância",
-      desc: "Desenvolva uma mente próspera capaz de enxergar e criar novas vias de crescimento em sua realidade.",
+      desc: "Desenvolva uma mente próspera, capaz de enxergar e criar novos caminhos de crescimento, abundância e riqueza em sua realidade.",
       icon: Eye,
       badge: "Expansão"
     },
@@ -559,7 +559,7 @@ const Course = () => {
           </div>
 
           {/* Right Column: Sticky Capa Card */}
-          <div className="lg:col-span-5 lg:sticky lg:top-32 flex justify-center w-full">
+          <div className="lg:col-span-5 lg:sticky lg:top-32 flex flex-col items-center gap-6 w-full">
             <motion.div 
               initial={{ opacity: 0, scale: 0.95 }}
               whileInView={{ opacity: 1, scale: 1 }}
@@ -577,6 +577,45 @@ const Course = () => {
                   className="w-full h-full object-cover transition-transform duration-[2s] group-hover:scale-110"
                   referrerPolicy="no-referrer"
                 />
+              </div>
+            </motion.div>
+
+            {/* Benefit Card matching the grid style */}
+            <motion.div 
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.2, duration: 0.6 }}
+              whileHover={{ y: -5, scale: 1.02 }}
+              className="relative overflow-hidden p-6 rounded-3xl bg-white/[0.03] border border-white/5 hover:border-brand-gold/30 hover:bg-white/[0.06] hover:shadow-[0_20px_40px_rgba(201,154,36,0.08)] transition-all duration-500 group flex flex-col justify-between gap-4 cursor-default w-full max-w-sm"
+            >
+              {/* Ambient background glow inside the card */}
+              <div className="absolute -right-8 -bottom-8 w-20 h-20 bg-brand-gold/5 rounded-full blur-xl group-hover:bg-brand-gold/10 transition-all duration-700 pointer-events-none" />
+              
+              <div className="space-y-4 relative z-10">
+                <div className="flex items-center justify-between">
+                  <div className="w-11 h-11 rounded-2xl bg-brand-gold/10 border border-brand-gold/20 flex items-center justify-center text-brand-gold group-hover:bg-brand-gold group-hover:text-brand-dark group-hover:rotate-6 transition-all duration-500 shadow-[0_0_15px_rgba(201,154,36,0.1)] overflow-visible">
+                    <Pendulum size={24} className="shrink-0 text-current" />
+                  </div>
+                  <span className="text-[9px] uppercase font-mono tracking-widest px-2.5 py-1 rounded-full bg-brand-gold/10 text-brand-gold border border-brand-gold/20">
+                    Método Exclusivo
+                  </span>
+                </div>
+                
+                <h4 className="text-lg font-serif font-medium text-white tracking-wide leading-snug group-hover:text-brand-gold transition-colors duration-300 uppercase">
+                  CURE SUA VIDA MUDANDO SEUS HÁBITOS
+                </h4>
+                
+                {/* 5 Golden Stars row */}
+                <div className="flex items-center gap-1 pt-1">
+                  {[...Array(5)].map((_, i) => (
+                    <Star 
+                      key={i} 
+                      size={18} 
+                      className="fill-brand-gold text-brand-gold" 
+                    />
+                  ))}
+                </div>
               </div>
             </motion.div>
           </div>
@@ -606,7 +645,7 @@ const ForWho = () => {
             whileInView={{ opacity: 1, y: 0 }}
             className="text-5xl lg:text-7xl font-serif mb-6 text-brand-dark"
           >
-            Essa jornada é <span className="italic text-brand-gold">para você</span> que...
+            Esta jornada é <span className="italic text-brand-gold">para você</span> que...
           </motion.h2>
           <div className="w-24 h-1 bg-brand-gold/40 mx-auto rounded-full" />
         </div>
