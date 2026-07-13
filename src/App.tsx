@@ -580,6 +580,49 @@ const Course = () => {
               </div>
             </motion.div>
 
+            {/* Terapeuta Vibracional Card */}
+            <motion.div 
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.1, duration: 0.6 }}
+              whileHover={{ y: -5, scale: 1.02 }}
+              className="relative overflow-hidden p-6 rounded-3xl bg-white/[0.03] border border-white/5 hover:border-brand-gold/30 hover:bg-white/[0.06] hover:shadow-[0_20px_40px_rgba(201,154,36,0.08)] transition-all duration-500 group flex flex-col justify-between gap-4 cursor-default w-full max-w-sm"
+            >
+              {/* Ambient background glow inside the card */}
+              <div className="absolute -right-8 -bottom-8 w-20 h-20 bg-brand-gold/5 rounded-full blur-xl group-hover:bg-brand-gold/10 transition-all duration-700 pointer-events-none" />
+              
+              <div className="space-y-4 relative z-10">
+                <div className="flex items-center justify-between">
+                  <div className="w-11 h-11 rounded-2xl bg-brand-gold/10 border border-brand-gold/20 flex items-center justify-center text-brand-gold group-hover:bg-brand-gold group-hover:text-brand-dark group-hover:rotate-6 transition-all duration-500 shadow-[0_0_15px_rgba(201,154,36,0.1)] overflow-visible">
+                    <Pendulum size={24} className="shrink-0 text-current" />
+                  </div>
+                  <span className="text-[9px] uppercase font-mono tracking-widest px-2.5 py-1 rounded-full bg-brand-gold/10 text-brand-gold border border-brand-gold/20">
+                    Cris Rossi
+                  </span>
+                </div>
+                
+                <h4 className="text-xl font-serif font-medium text-white tracking-wide leading-snug group-hover:text-brand-gold transition-colors duration-300">
+                  Terapeuta <span className="italic text-brand-gold font-serif">Vibracional</span>
+                </h4>
+                
+                <p className="text-xs text-white/55 font-light leading-relaxed group-hover:text-white/75 transition-colors duration-300 italic">
+                  "A cura vai além do corpo físico, desperte o seu poder."
+                </p>
+
+                {/* 5 Golden Stars row with subtle glow */}
+                <div className="flex items-center gap-1 pt-1">
+                  {[...Array(5)].map((_, i) => (
+                    <Star 
+                      key={i} 
+                      size={16} 
+                      className="fill-brand-gold text-brand-gold drop-shadow-[0_0_6px_rgba(201,154,36,0.4)]" 
+                    />
+                  ))}
+                </div>
+              </div>
+            </motion.div>
+
             {/* Benefit Card matching the grid style */}
             <motion.div 
               initial={{ opacity: 0, y: 20 }}
@@ -602,17 +645,17 @@ const Course = () => {
                   </span>
                 </div>
                 
-                <h4 className="text-lg font-serif font-medium text-white tracking-wide leading-snug group-hover:text-brand-gold transition-colors duration-300 uppercase">
-                  CURE SUA VIDA MUDANDO SEUS HÁBITOS
+                <h4 className="text-xl font-serif font-medium text-white tracking-wide leading-snug group-hover:text-brand-gold transition-colors duration-300">
+                  Cure sua vida <span className="italic text-brand-gold font-serif font-medium">mudando seus hábitos</span>
                 </h4>
                 
-                {/* 5 Golden Stars row */}
+                {/* 5 Golden Stars row with subtle glow */}
                 <div className="flex items-center gap-1 pt-1">
                   {[...Array(5)].map((_, i) => (
                     <Star 
                       key={i} 
-                      size={18} 
-                      className="fill-brand-gold text-brand-gold" 
+                      size={16} 
+                      className="fill-brand-gold text-brand-gold drop-shadow-[0_0_6px_rgba(201,154,36,0.4)]" 
                     />
                   ))}
                 </div>
@@ -661,7 +704,7 @@ const ForWho = () => {
               className="flex flex-col gap-6 p-10 bg-white rounded-[2.5rem] shadow-[0_10px_30px_-10px_rgba(0,0,0,0.05)] border border-brand-dark/5 transition-all duration-500 hover:shadow-[0_20px_50px_-12px_rgba(201,154,36,0.15)] group"
             >
               <div className="w-14 h-14 rounded-2xl bg-brand-gold/5 flex items-center justify-center shrink-0 group-hover:bg-brand-gold group-hover:text-brand-dark transition-all duration-500">
-                <CheckCircle2 className="text-brand-gold group-hover:text-brand-dark" size={28} />
+                <Pendulum className="text-brand-gold group-hover:text-brand-dark transition-colors duration-500" size={28} />
               </div>
               <p className="text-brand-dark/80 font-medium text-lg leading-relaxed">{point}</p>
             </motion.div>
