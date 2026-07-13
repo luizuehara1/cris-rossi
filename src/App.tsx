@@ -12,12 +12,16 @@ import {
   Menu,
   X,
   Compass,
-  Zap,
   Star,
   Users,
   Calendar,
   Lock,
-  Play
+  Play,
+  Sparkles,
+  History,
+  Coins,
+  Eye,
+  Heart
 } from 'lucide-react';
 import { FaWhatsapp, FaInstagram, FaYoutube } from 'react-icons/fa';
 
@@ -30,7 +34,7 @@ const LINKS = {
 
 const IMAGES = {
   cris: "https://i.postimg.cc/vDFdP2Vn/Chat-GPT-Image-14-de-mai-de-2026-16-41-07.png",
-  course: "https://i.postimg.cc/Df5jBMqP/Chat-GPT-Image-14-de-mai-de-2026-16-47-33.png",
+  course: "https://i.postimg.cc/PJk6dMMv/Chat-GPT-Image-13-de-jul-de-2026-16-39-29.png",
   spiritual: "https://images.unsplash.com/photo-1506126613408-eca07ce68773?auto=format&fit=crop&q=80&w=800"
 };
 
@@ -119,6 +123,49 @@ const Navbar = () => {
   );
 };
 
+const Pendulum = ({ className = "text-brand-gold", size = 24 }: { className?: string; size?: number }) => {
+  return (
+    <motion.svg
+      width={size}
+      height={size}
+      viewBox="0 0 24 24"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      className={className}
+      animate={{ rotate: [-24, 24, -24] }}
+      transition={{
+        duration: 3,
+        repeat: Infinity,
+        ease: "easeInOut"
+      }}
+      style={{ originX: "50%", originY: "10%" }}
+    >
+      {/* Small top anchor ring */}
+      <circle cx="12" cy="3" r="1.5" className="fill-current" />
+      
+      {/* Delicately dotted chain line representing the metal links */}
+      <line x1="12" y1="4.5" x2="12" y2="14.5" className="stroke-current" strokeWidth="1.2" strokeDasharray="1.5 1.5" />
+      
+      {/* Top cap bead of the pendulum */}
+      <circle cx="12" cy="14.5" r="1.5" className="fill-current" />
+      
+      {/* Smooth classic metallic teardrop pendulum with pointed tip */}
+      <path
+        d="M12 14.5 C14.8 14.5 15.8 18.5 12 23 C8.2 18.5 9.2 14.5 12 14.5 Z"
+        className="fill-current"
+      />
+      
+      {/* Sleek metallic reflection highlight */}
+      <path 
+        d="M11 15.5 C12.2 15.5 13 17.5 12.1 21.2" 
+        className="stroke-white/40" 
+        strokeWidth="0.8" 
+        strokeLinecap="round" 
+      />
+    </motion.svg>
+  );
+};
+
 const Hero = () => {
   return (
     <section className="relative min-h-screen flex items-center pt-20 overflow-hidden bg-brand-dark text-white">
@@ -137,10 +184,11 @@ const Hero = () => {
           <motion.div 
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
+            whileHover={{ scale: 1.05 }}
             transition={{ delay: 0.2, duration: 0.8 }}
-            className="inline-flex items-center gap-3.5 px-6 py-3 sm:px-8 sm:py-3.5 rounded-full bg-brand-gold/8 border border-brand-gold/20 text-brand-gold text-xs sm:text-[13px] font-bold tracking-[0.25em] sm:tracking-[0.3em] uppercase mb-8 backdrop-blur-md shadow-[0_10px_35px_rgba(201,154,36,0.06)] hover:bg-brand-gold/12 transition-all duration-300 pointer-events-none"
+            className="inline-flex items-center gap-4 px-7 py-3.5 sm:px-10 sm:py-4.5 rounded-full bg-brand-gold/10 border border-brand-gold/30 text-brand-gold text-[13px] sm:text-sm font-bold tracking-[0.25em] sm:tracking-[0.3em] uppercase mb-8 backdrop-blur-md shadow-[0_15px_40px_rgba(201,154,36,0.12)] hover:bg-brand-gold/20 cursor-default transition-all duration-300"
           >
-            <Star size={18} className="fill-brand-gold animate-pulse shrink-0" />
+            <Star size={20} className="fill-brand-gold animate-pulse shrink-0" />
             <span className="leading-none mt-[1px]">Terapeuta Vibracional</span>
           </motion.div>
           
@@ -150,8 +198,8 @@ const Hero = () => {
             transition={{ delay: 0.4, duration: 0.8 }}
             className="mb-10 p-5 bg-white/5 backdrop-blur-2xl border border-white/10 rounded-3xl flex items-center gap-5 max-w-sm group hover:border-brand-gold/30 transition-all duration-500"
           >
-            <div className="w-14 h-14 bg-brand-gold/10 rounded-2xl flex items-center justify-center shrink-0 border border-brand-gold/20 group-hover:scale-110 transition-transform duration-500 shadow-[0_0_15px_rgba(201,154,36,0.1)]">
-              <FaWhatsapp size={26} className="text-brand-gold" />
+            <div className="w-14 h-14 bg-brand-gold/10 rounded-2xl flex items-center justify-center shrink-0 border border-brand-gold/20 group-hover:scale-110 transition-transform duration-500 shadow-[0_0_15px_rgba(201,154,36,0.1)] text-brand-gold">
+              <FaWhatsapp size={26} />
             </div>
             <div>
               <p className="text-sm font-medium text-white/90">QUER MARCAR UMA SESSÃO?</p>
@@ -213,7 +261,7 @@ const Hero = () => {
           >
             <div className="glass-card p-8 rounded-3xl shadow-2xl backdrop-blur-3xl border-brand-gold/20">
               <p className="text-brand-gold font-serif text-4xl italic mb-1 tracking-tighter">21 Dias</p>
-              <p className="text-[10px] uppercase tracking-[0.2em] opacity-50 font-bold">de Cura Profunda</p>
+              <p className="text-[10px] uppercase tracking-[0.2em] opacity-50 font-bold">para uma Nova Vida</p>
             </div>
           </motion.div>
           
@@ -222,8 +270,8 @@ const Hero = () => {
             transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 1 }}
             className="absolute -left-12 bottom-1/4 hidden lg:block z-20"
           >
-            <div className="glass-card w-16 h-16 rounded-2xl flex items-center justify-center border-brand-gold/20 shadow-2xl">
-              <Zap size={24} className="text-brand-gold" />
+            <div className="glass-card w-20 h-20 rounded-2xl flex items-center justify-center border-brand-gold/20 shadow-2xl overflow-visible">
+              <Pendulum size={44} className="text-brand-gold" />
             </div>
           </motion.div>
         </motion.div>
@@ -242,7 +290,7 @@ const About = () => {
     {
       title: "Divórcio Energético",
       subtitle: "Corte de Vínculos",
-      desc: "Especialmente reconhecida no corte de padrões de escassez, ajudando pessoas a romperem vínculos energéticos negativos, crenças limitantes e bloqueios que impedem o crescimento."
+      desc: "Divórcio terapêutico vai além de um corte energético com o passado ou com  pessoas que não resoam mais com vc ,ele encerra laços de vidas passadas,pactos feito por seus antepassados,juras,maldiçoes ,formas pensamentos presas na linha do tempo da sua história."
     },
     {
       title: "Quebrando Votos de Pobreza em 21 Dias",
@@ -281,7 +329,7 @@ const About = () => {
                 className="bg-brand-dark p-8 rounded-[2rem] text-white shadow-[0_40px_80px_-15px_rgba(0,0,0,0.5)] max-w-[260px] border border-white/10"
               >
                 <p className="font-serif italic text-xl leading-tight mb-4 text-brand-gold">
-                  "A cura é o retorno à sua essência e o despertar do seu merecimento."
+                  "A cura vai além do corpo físico, desperte o seu poder."
                 </p>
                 <div className="flex gap-1">
                   {[1,2,3,4,5].map(i => <Star key={i} size={12} className="fill-brand-gold text-brand-gold" />)}
@@ -356,13 +404,43 @@ const About = () => {
 };
 
 const Course = () => {
-  const benefits = [
-    "Liberar crenças de escassez",
-    "Romper padrões ancestrais",
-    "Curar registros do dinheiro",
-    "Consciência de Abundância",
-    "Reconectar com o Merecimento",
-    "Fortalecer Espiritualidade"
+  const benefitsData = [
+    {
+      title: "Liberar crenças de escassez",
+      desc: "Limpeza profunda de medos inconscientes, sentimentos de falta e crenças limitantes sobre o fluxo do dinheiro.",
+      icon: Sparkles,
+      badge: "Mentalidade"
+    },
+    {
+      title: "Romper padrões ancestrais",
+      desc: "Libertação de votos de pobreza, heranças energéticas familiares e pactos limitantes herdados do passado.",
+      icon: History,
+      badge: "Linhagem"
+    },
+    {
+      title: "Sintonizar-se com a riqueza",
+      desc: "Eleve sua assinatura vibracional para atrair novas oportunidades e abundância financeira com leveza.",
+      icon: Coins,
+      badge: "Frequência"
+    },
+    {
+      title: "Consciência de Abundância",
+      desc: "Desenvolva uma mente próspera capaz de enxergar e criar novas vias de crescimento em sua realidade.",
+      icon: Eye,
+      badge: "Expansão"
+    },
+    {
+      title: "Reconectar com o Merecimento",
+      desc: "Sinta-se verdadeiramente digno(a) de receber, acolher e desfrutar do melhor que o universo oferece.",
+      icon: Heart,
+      badge: "Cura"
+    },
+    {
+      title: "Fortalecer Espiritualidade",
+      desc: "Conexão profunda com as leis universais do dar e receber, fluindo sob a proteção e guia divina.",
+      icon: Compass,
+      badge: "Alinhamento"
+    }
   ];
 
   return (
@@ -401,19 +479,16 @@ const Course = () => {
               className="space-y-6 text-white/70 font-light leading-relaxed text-base md:text-lg text-balance"
             >
               <p>
-                O método <span className="text-white font-medium">“Quebrando Votos de Pobreza em 21 Dias”</span> foi desenvolvido para ajudar pessoas a identificarem e liberarem padrões energéticos de escassez que impedem o fluxo da prosperidade, da abundância e da realização pessoal.
+                O método <span className="text-white font-medium">“Quebrando Votos de Pobreza em 21 Dias”</span> foi criado para ajudar você a identificar e liberar padrões energéticos de escassez que bloqueiam o fluxo da prosperidade, da abundância e da realização pessoal.
               </p>
               <p>
-                Através de um passo a passo profundo e transformador, você aprenderá a <span className="text-brand-gold font-medium">cortar laços energéticos negativos</span> trazidos de gerações ancestrais, votos conscientes e inconscientes, juras, maldições, pragas, sentimentos de vingança, falta de permissão para prosperar e bloqueios emocionais que limitam sua evolução.
+                Durante essa jornada, você será conduzido(a) por um processo profundo de limpeza e transformação, rompendo <span className="text-brand-gold font-medium">laços energéticos negativos</span> ligados a crenças familiares, votos conscientes ou inconscientes, pactos, juras, culpas, medos, sentimentos de vingança e bloqueios emocionais.
               </p>
               <p>
-                Muitas vezes, carregamos pesos energéticos herdados da família, crenças de sofrimento, culpa e escassez que foram repetidas por anos e que acabam afetando nossos relacionamentos, nossa vida financeira, emocional e espiritual.
+                Muitas dessas marcas podem ser transmitidas por gerações e, sem percebermos, acabam influenciando nossa vida financeira, emocional, espiritual e nossos relacionamentos.
               </p>
               <p>
-                Este método foi criado para promover uma verdadeira libertação energética, ajudando você a romper com padrões repetitivos, desbloquear sua energia e permitir que a prosperidade volte a fluir de forma leve e equilibrada em sua vida.
-              </p>
-              <p>
-                Durante 21 dias, você será conduzido(a) por um processo de limpeza, consciência, fortalecimento vibracional e reconexão com seu merecimento, despertando uma nova mentalidade de abundância e expansão.
+                Ao longo de 21 dias, você fortalecerá sua energia, despertará uma nova consciência sobre o merecimento e abrirá espaço para viver com mais leveza, equilíbrio, prosperidade e expansão.
               </p>
               <p className="border-l-2 border-brand-gold/40 pl-4 py-1 text-white/85 font-medium italic">
                 “Cortar laços com a pobreza e o não merecimento é modificar de uma vez por todas a sua assinatura energética, liberando o fluxo da riqueza em sua vida.”
@@ -424,24 +499,48 @@ const Course = () => {
             </motion.div>
 
             {/* Benefit Tags list styled nicely */}
-            <div className="space-y-6 pt-6">
-              <h3 className="text-xs font-bold uppercase tracking-[0.2em] text-brand-gold/80 font-mono">O que você vai conquistar:</h3>
-              <div className="grid sm:grid-cols-2 gap-x-8 gap-y-5">
-                {benefits.map((benefit, i) => (
-                  <motion.div 
-                    key={i} 
-                    initial={{ opacity: 0, x: -10 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    transition={{ delay: i * 0.1 }}
-                    whileHover={{ x: 5 }}
-                    className="flex gap-4 items-center group cursor-default"
-                  >
-                    <div className="w-8 h-8 rounded-full bg-brand-gold/10 border border-brand-gold/20 flex items-center justify-center shrink-0 group-hover:bg-brand-gold group-hover:text-brand-dark transition-all duration-300">
-                      <CheckCircle2 size={16} />
-                    </div>
-                    <span className="text-white/70 font-medium group-hover:text-white transition-colors tracking-tight text-sm md:text-base">{benefit}</span>
-                  </motion.div>
-                ))}
+            <div className="space-y-8 pt-6">
+              <div className="flex flex-col gap-2">
+                <span className="text-[10px] uppercase tracking-[0.25em] text-brand-gold font-bold font-mono">Incluso no Método</span>
+                <h3 className="text-2xl font-serif text-white font-medium tracking-tight">O que você vai conquistar:</h3>
+              </div>
+              <div className="grid sm:grid-cols-2 gap-6">
+                {benefitsData.map((benefit, i) => {
+                  const IconComponent = benefit.icon;
+                  return (
+                    <motion.div 
+                      key={i} 
+                      initial={{ opacity: 0, y: 20 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      viewport={{ once: true }}
+                      transition={{ delay: i * 0.1, duration: 0.6 }}
+                      whileHover={{ y: -5, scale: 1.02 }}
+                      className="relative overflow-hidden p-6 rounded-3xl bg-white/[0.03] border border-white/5 hover:border-brand-gold/30 hover:bg-white/[0.06] hover:shadow-[0_20px_40px_rgba(201,154,36,0.08)] transition-all duration-500 group flex flex-col justify-between gap-4 cursor-default"
+                    >
+                      {/* Ambient background glow inside each card */}
+                      <div className="absolute -right-8 -bottom-8 w-20 h-20 bg-brand-gold/5 rounded-full blur-xl group-hover:bg-brand-gold/10 transition-all duration-700 pointer-events-none" />
+                      
+                      <div className="space-y-3.5 relative z-10">
+                        <div className="flex items-center justify-between">
+                          <div className="w-11 h-11 rounded-2xl bg-brand-gold/10 border border-brand-gold/20 flex items-center justify-center text-brand-gold group-hover:bg-brand-gold group-hover:text-brand-dark group-hover:rotate-6 transition-all duration-500 shadow-[0_0_15px_rgba(201,154,36,0.1)] overflow-visible">
+                            <Pendulum size={24} className="shrink-0 text-current" />
+                          </div>
+                          <span className="text-[9px] uppercase font-mono tracking-widest px-2.5 py-1 rounded-full bg-brand-gold/10 text-brand-gold border border-brand-gold/20">
+                            {benefit.badge}
+                          </span>
+                        </div>
+                        
+                        <h4 className="text-base font-serif font-medium text-white group-hover:text-brand-gold transition-colors duration-300">
+                          {benefit.title}
+                        </h4>
+                        
+                        <p className="text-xs text-white/55 font-light leading-relaxed group-hover:text-white/75 transition-colors duration-300">
+                          {benefit.desc}
+                        </p>
+                      </div>
+                    </motion.div>
+                  );
+                })}
               </div>
             </div>
 
@@ -451,10 +550,10 @@ const Course = () => {
                 <Compass size={120} />
               </div>
               <p className="text-brand-offwhite/80 leading-relaxed italic text-lg mb-8 relative z-10">
-                "Este processo não é apenas racional, é uma limpeza profunda em nível de DNA espiritual, removendo o que não te pertence mais."
+                "Este processo vai além da mente: é uma limpeza profunda no seu DNA espiritual, rompendo pactos, padrões e energias que já não pertencem à sua história."
               </p>
               <a href={LINKS.course} target="_blank" rel="noopener noreferrer" className="btn-primary w-full shadow-2xl relative z-10">
-                Garantir meu curso agora
+                Garantir meu processo agora
               </a>
             </div>
           </div>
@@ -467,40 +566,17 @@ const Course = () => {
               viewport={{ once: true }}
               className="relative w-full max-w-sm group transition-all duration-700 perspective-[2000px]"
             >
-              <div className="absolute -inset-4 bg-brand-gold/10 blur-[60px] opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+              {/* Golden dynamic backglow on hover */}
+              <div className="absolute -inset-4 bg-brand-gold/15 blur-[50px] opacity-0 group-hover:opacity-100 transition-opacity duration-700 rounded-full" />
               
-              <div className="netflix-card aspect-[11/14] border border-white/5 relative z-10">
+              {/* Perfectly square, rounded, high-end frame without overlay text */}
+              <div className="relative z-10 aspect-square w-full rounded-[2.5rem] overflow-hidden border border-white/10 shadow-[0_25px_60px_-15px_rgba(0,0,0,0.8)] bg-brand-black transition-all duration-500 group-hover:scale-105 group-hover:border-brand-gold/30">
                 <img 
                   src={IMAGES.course} 
-                  alt="Curso Cris Rossi" 
-                  className="w-full h-full object-cover" 
+                  alt="Curso Quebrando Votos de Pobreza em 21 Dias" 
+                  className="w-full h-full object-cover transition-transform duration-[2s] group-hover:scale-110"
+                  referrerPolicy="no-referrer"
                 />
-                
-                <div className="absolute inset-0 bg-gradient-to-t from-brand-black via-brand-black/35 to-transparent p-8 flex flex-col justify-end">
-                   <div className="flex items-center gap-3 mb-4">
-                      <div className="px-3 py-1 bg-brand-gold text-brand-dark text-[10px] font-bold uppercase tracking-[0.2em] rounded">Original Cris Rossi</div>
-                      <span className="text-xs text-white/60 font-bold">Volume 01</span>
-                   </div>
-                   <h4 className="text-3xl font-serif text-white mb-6 leading-tight group-hover:text-brand-gold transition-colors duration-500">Jornada da Prosperidade</h4>
-                   
-                   <div className="flex items-center gap-6">
-                      <div className="flex -space-x-3">
-                         {[1,2,3,4].map(i => (
-                           <div key={i} className="w-8 h-8 rounded-full border-2 border-brand-dark bg-brand-moss overflow-hidden shadow-lg transition-transform hover:-translate-y-1">
-                             <img src={`https://i.pravatar.cc/100?u=user${i}`} alt="User" />
-                           </div>
-                         ))}
-                      </div>
-                      <div className="h-px w-6 bg-white/20" />
-                      <span className="text-[10px] text-white/50 uppercase tracking-[0.2em] font-bold">+ de 1.2k Alunos</span>
-                   </div>
-                </div>
-              </div>
-              
-              <div className="absolute top-6 left-6 z-20">
-                <div className="glass-card px-4 py-2 rounded-lg text-[10px] font-bold text-white tracking-[0.2em] uppercase backdrop-blur-3xl shadow-2xl border-white/20">
-                  Jornada de 21 Dias
-                </div>
               </div>
             </motion.div>
           </div>
@@ -514,11 +590,11 @@ const Course = () => {
 const ForWho = () => {
   const points = [
     "Você sente que trabalha muito, mas o dinheiro não flui como deveria",
-    "Percebe padrões repetidos de escassez e dificuldade na sua ancestralidade",
-    "Tem dificuldade crônica em se sentir merecedora de verdadeira abundância",
+    "Percebe padrões repetidos de escassez e dificuldade nos seus relacionamentos familiares",
+    "Tem dificuldade crônica em se sentir merecedora de verdadeira riqueza",
     "Sente culpa profunda ao receber, cobrar por seu talento ou prosperar",
     "Busca uma cura vibracional profunda, além de técnicas puramente racionais",
-    "Deseja transformar permanentemente sua relação com a abundância divina"
+    "Deseja transformar definitivamente sua relação com a riqueza divina"
   ];
 
   return (
@@ -530,7 +606,7 @@ const ForWho = () => {
             whileInView={{ opacity: 1, y: 0 }}
             className="text-5xl lg:text-7xl font-serif mb-6 text-brand-dark"
           >
-            Essa jornada é <span className="italic text-brand-gold">para você</span> se…
+            Essa jornada é <span className="italic text-brand-gold">para você</span> que...
           </motion.h2>
           <div className="w-24 h-1 bg-brand-gold/40 mx-auto rounded-full" />
         </div>
@@ -653,7 +729,7 @@ const Journey = () => {
             className="inline-flex items-center gap-3 px-4 py-1.5 rounded-full bg-brand-gold/8 border border-brand-gold/20 text-brand-gold text-[10px] font-bold tracking-[0.25em] uppercase mb-6"
           >
             <Star size={12} className="fill-brand-gold animate-pulse" />
-            Prova Social & Depoimentos
+            Depoimentos de Sucesso
           </motion.div>
           
           <motion.h2 
@@ -662,7 +738,7 @@ const Journey = () => {
             viewport={{ once: true }}
             className="text-5xl lg:text-7xl mb-6 font-serif tracking-tight leading-tight text-white"
           >
-            Depoimentos de <span className="italic text-brand-gold">Transformação</span>
+            Vidas <span className="italic text-brand-gold">Transformadas</span>
           </motion.h2>
           
           <motion.p 
@@ -671,7 +747,7 @@ const Journey = () => {
             viewport={{ once: true }}
             className="text-white/60 max-w-2xl mx-auto text-base md:text-lg font-light leading-relaxed text-balance"
           >
-            Veja relatos reais e aulas transformadoras de pessoas que vivenciaram e atestaram o poder curativo do método Quebrando Votos de Pobreza em 21 Dias.
+            Conheça relatos reais e aulas transformadoras de pessoas que vivenciaram o método <strong className="font-semibold text-brand-gold">Quebrando Votos de Pobreza em 21 Dias</strong> e perceberam mudanças profundas em sua jornada de libertação, consciência e prosperidade.
           </motion.p>
         </div>
 
@@ -736,37 +812,136 @@ const Journey = () => {
 
 const Connection = () => {
   const socials = [
-    { name: 'Instagram', icon: <FaInstagram size={28} />, href: LINKS.instagram, color: 'bg-gradient-to-tr from-yellow-400 via-red-500 to-purple-500' },
-    { name: 'YouTube', icon: <FaYoutube size={28} />, href: LINKS.youtube, color: 'bg-red-600' },
-    { name: 'WhatsApp', icon: <FaWhatsapp size={28} />, href: LINKS.whatsapp, color: 'bg-green-500' },
+    { 
+      name: 'Instagram', 
+      handle: '@habitosquecuramamente',
+      badge: 'Reflexões & Sabedoria',
+      description: 'Acompanhe reflexões diárias de luz, lives exclusivas de cura, stories com ensinamentos práticos e conexão com nossa comunidade.',
+      actionText: 'Seguir no Instagram',
+      icon: <FaInstagram size={30} />, 
+      href: LINKS.instagram, 
+      color: 'bg-gradient-to-tr from-yellow-500 via-pink-500 to-purple-600',
+      glow: 'hover:shadow-[0_20px_50px_rgba(219,39,119,0.25)]',
+      borderHover: 'hover:border-pink-500/30',
+      accentColor: 'text-pink-500 bg-pink-500/5 border-pink-500/10'
+    },
+    { 
+      name: 'YouTube', 
+      handle: 'Canal Cris Rossi',
+      badge: 'Meditações & Aulas',
+      description: 'Acesse gratuitamente meditações guiadas de alta frequência, aulas sobre quebra de pactos e vídeos explicativos do método de 21 dias.',
+      actionText: 'Inscrever-se no Canal',
+      icon: <FaYoutube size={30} />, 
+      href: LINKS.youtube, 
+      color: 'bg-red-600',
+      glow: 'hover:shadow-[0_20px_50px_rgba(220,38,38,0.25)]',
+      borderHover: 'hover:border-red-600/30',
+      accentColor: 'text-red-600 bg-red-600/5 border-red-600/10'
+    },
+    { 
+      name: 'WhatsApp', 
+      handle: 'Fale Conosco',
+      badge: 'Suporte & Atendimento',
+      description: 'Tire suas dúvidas diretamente sobre a jornada com nosso time, agende consultas vibracionais e receba suporte humanizado.',
+      actionText: 'Conversar no WhatsApp',
+      icon: <FaWhatsapp size={30} />, 
+      href: LINKS.whatsapp, 
+      color: 'bg-emerald-500',
+      glow: 'hover:shadow-[0_20px_50px_rgba(16,185,129,0.25)]',
+      borderHover: 'hover:border-emerald-500/30',
+      accentColor: 'text-emerald-600 bg-emerald-500/5 border-emerald-500/10'
+    },
   ];
 
   return (
-    <section id="contato" className="section-padding bg-brand-offwhite">
-      <div className="max-w-7xl mx-auto">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl lg:text-5xl mb-4">Conecte-se com Cris Rossi</h2>
-          <p className="text-brand-dark/50">Diariamente compartilhando cura e expansão</p>
+    <section id="contato" className="section-padding bg-gradient-to-b from-brand-offwhite via-white to-brand-offwhite/50 relative overflow-hidden">
+      {/* Visual background details to match premium feel */}
+      <div className="absolute top-1/2 left-0 -translate-y-1/2 w-[400px] h-[400px] bg-brand-gold/2 blur-[100px] rounded-full pointer-events-none" />
+      <div className="absolute bottom-0 right-0 w-[500px] h-[500px] bg-brand-moss/3 blur-[120px] rounded-full pointer-events-none" />
+
+      <div className="max-w-7xl mx-auto px-6 relative z-10">
+        <div className="text-center mb-20">
+          <motion.div
+            initial={{ opacity: 0, y: 15 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-brand-gold/10 border border-brand-gold/20 text-brand-gold text-[10px] font-bold tracking-[0.25em] uppercase mb-5"
+          >
+            <Sparkles size={12} className="animate-pulse" />
+            Comunidade & Luz
+          </motion.div>
+          
+          <motion.h2 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-4xl md:text-6xl font-serif mb-6 text-brand-dark tracking-tight"
+          >
+            Conecte-se com <span className="italic text-brand-gold">Cris Rossi</span>
+          </motion.h2>
+          
+          <motion.p 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-brand-dark/60 max-w-2xl mx-auto text-base md:text-lg font-light leading-relaxed text-balance"
+          >
+            Diariamente compartilhando cura, expansão e ensinamentos profundos nas redes. Escolha a sua plataforma de preferência e venha expandir conosco.
+          </motion.p>
         </div>
 
-        <div className="grid md:grid-cols-3 gap-8">
+        <div className="grid md:grid-cols-3 gap-8 md:gap-10">
           {socials.map((social, i) => (
             <motion.a
-               key={i}
+               key={social.name}
                href={social.href}
                target="_blank"
                rel="noopener noreferrer"
-               whileHover={{ y: -10 }}
-               className="group p-8 bg-white rounded-3xl shadow-xl flex flex-col items-center text-center border border-brand-dark/5"
+               initial={{ opacity: 0, y: 30 }}
+               whileInView={{ opacity: 1, y: 0 }}
+               viewport={{ once: true }}
+               transition={{ duration: 0.6, delay: i * 0.15, ease: [0.215, 0.61, 0.355, 1] }}
+               whileHover={{ y: -12 }}
+               className={`group relative p-8 md:p-10 bg-white rounded-[2.5rem] border border-brand-dark/5 shadow-[0_15px_40px_rgba(0,0,0,0.02)] flex flex-col justify-between items-start text-left transition-all duration-500 ${social.borderHover} ${social.glow}`}
             >
-              <div className={`w-16 h-16 rounded-2xl ${social.color} text-white flex items-center justify-center mb-6 shadow-lg group-hover:scale-110 transition-transform`}>
-                {social.icon}
+              {/* Dynamic Accent Line at the top of the card on hover */}
+              <div className={`absolute top-0 left-8 right-8 h-[3px] rounded-b-full scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-center ${social.color}`} />
+
+              <div className="w-full">
+                {/* Header block with network badge & icon */}
+                <div className="flex justify-between items-start mb-8 w-full">
+                  <div className={`w-14 h-14 rounded-2xl ${social.color} text-white flex items-center justify-center shadow-lg shadow-black/10 group-hover:scale-110 group-hover:rotate-3 transition-all duration-500`}>
+                    {social.icon}
+                  </div>
+                  
+                  <span className={`text-[10px] font-mono font-bold tracking-wider px-3.5 py-1.5 rounded-full border uppercase ${social.accentColor} transition-colors duration-500`}>
+                    {social.badge}
+                  </span>
+                </div>
+
+                {/* Info Block */}
+                <div className="mb-8">
+                  <h3 className="text-2xl font-serif font-semibold text-brand-dark mb-1 group-hover:text-brand-gold transition-colors duration-300">
+                    {social.name}
+                  </h3>
+                  <p className="text-xs font-mono text-brand-dark/40 mb-4 font-medium">
+                    {social.handle}
+                  </p>
+                  <p className="text-brand-dark/60 text-sm md:text-base font-light leading-relaxed">
+                    {social.description}
+                  </p>
+                </div>
               </div>
-              <h3 className="text-xl font-serif font-bold mb-2">{social.name}</h3>
-              <p className="text-brand-dark/40 mb-6 text-sm">Acesse conteúdos gratuitos e acompanhe nossa jornada.</p>
-              <span className="text-brand-gold font-bold flex items-center gap-2 group-hover:gap-4 transition-all">
-                Seguir Agora <ArrowRight size={18} />
-              </span>
+
+              {/* Action Trigger Link styled like a premium button */}
+              <div className="w-full pt-4 border-t border-brand-dark/5 flex justify-between items-center text-sm font-semibold text-brand-dark group-hover:text-brand-gold transition-colors duration-300">
+                <span className="tracking-wide">
+                  {social.actionText}
+                </span>
+                <div className="w-9 h-9 rounded-full bg-brand-offwhite group-hover:bg-brand-gold group-hover:text-white flex items-center justify-center transition-all duration-300 transform group-hover:translate-x-2">
+                  <ArrowRight size={16} />
+                </div>
+              </div>
             </motion.a>
           ))}
         </div>
@@ -807,7 +982,7 @@ const FAQ = () => {
            whileInView={{ opacity: 1, y: 0 }}
            className="text-center mb-20"
         >
-          <h2 className="text-5xl lg:text-7xl font-serif mb-6">Clarificando <span className="italic text-brand-gold">Caminhos</span></h2>
+          <h2 className="text-5xl lg:text-7xl font-serif mb-6">Abrindo Novos <span className="italic text-brand-gold">Caminhos</span></h2>
           <div className="w-24 h-1 bg-brand-gold/30 mx-auto rounded-full" />
         </motion.div>
         
@@ -954,7 +1129,9 @@ const WhatsAppSticky = () => {
       </div>
 
       <div className="relative w-16 h-16 md:w-20 md:h-20 bg-brand-gold text-brand-dark rounded-full shadow-[0_20px_50px_rgba(201,154,36,0.3)] flex items-center justify-center transition-all duration-500 group-hover:shadow-[0_0_70px_rgba(201,154,36,0.5)] group-hover:scale-110">
-        <FaWhatsapp size={32} className="md:w-10 md:h-10" />
+        <span className="text-[32px] md:text-[40px] flex items-center justify-center">
+          <FaWhatsapp />
+        </span>
         
         <motion.div 
           animate={{ scale: [1, 1.3, 1], opacity: [0.2, 0.4, 0.2] }}
